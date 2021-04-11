@@ -23,4 +23,13 @@ class CustomerRepository
             });
     }
 
+    public function findById($customerId)
+    {
+        return Customer::where('Id', $customerId)
+            ->where('active', 1)
+            ->with('user')
+            ->firstOrFail();
+    }
+
+
 }
