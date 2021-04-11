@@ -18,4 +18,10 @@ class CustomerController extends Controller
         $customers = $this->customerRepository->all();
         return $customers;
     }
+
+    public function show($customerId)
+    {
+        $customer = $this->customerRepository->findById($customerId);
+        return $customer;
+    }
 }
