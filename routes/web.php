@@ -15,3 +15,4 @@ use \App\Http\Controllers\CustomerController;
 */
 
 Route::get('/customers', [CustomerController::class,'index']);
+Route::get('/customer/{customerId}', [CustomerController::class,'show']);
