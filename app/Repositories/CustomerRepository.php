@@ -32,4 +32,9 @@ class CustomerRepository
 
        $customer->update(request()->only('name'));
     }
+
+    public function destroy($customerId)
+    {
+       $customer = Customer::where('id', $customerId)->delete();
+    }
 }
