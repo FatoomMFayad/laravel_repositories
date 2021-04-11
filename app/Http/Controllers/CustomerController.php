@@ -24,4 +24,9 @@ class CustomerController extends Controller
         $customer = $this->customerRepository->findById($customerId);
         return $customer;
     }
+    public function update($customerId)
+    {
+        $this->customerRepository->update($customerId);
+        return redirect('/customer/'. $customerId);
+    }
 }
