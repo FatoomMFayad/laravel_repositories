@@ -13,30 +13,15 @@ class CustomerRepository
         return Customer::orderBy('name')
             ->where('active', 1)->with('user')
             ->get()
-            ->map(function ($customer){
-                return $this->formatCustomer($customer);
-            });
+            ->map->format();
     }
 
     public function findById($customerId)
     {
-        $customer =  Customer::where('Id', $customerId)
+        return $customer =  Customer::where('Id', $customerId)
             ->where('active', 1)
             ->with('user')
-            ->firstOrFail();
-        return $this->formatCustomer($customer);
+            ->firstOrFail()
+            ->format();
     }
-
-    protected function formatCustomer($customer)
-    {
-            return [
-                'customer_id' => $customer->id,
-                'name' => $customer->name,
-                'created_by' => $customer->user->email,
-                'last_updated' => $customer->updated_at->diffForHumans(),
-            ];
-
-    }
-
-
 }
