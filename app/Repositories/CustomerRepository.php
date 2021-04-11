@@ -8,6 +8,7 @@ use App\Models\Customer;
 
 class CustomerRepository
 {
+
     public function all()
     {
         return Customer::orderBy('name')
@@ -23,5 +24,12 @@ class CustomerRepository
             ->with('user')
             ->firstOrFail()
             ->format();
+    }
+
+    public function update($customerId)
+    {
+       $customer = Customer::where('id', $customerId)->firstOrFail();
+
+       $customer->update(request()->only('name'));
     }
 }
