@@ -29,4 +29,10 @@ class CustomerController extends Controller
         $this->customerRepository->update($customerId);
         return redirect('/customer/'. $customerId);
     }
+
+    public function delete($customerId)
+    {
+        $this->customerRepository->delete($customerId);
+        return redirect('/customers');
+    }
 }
